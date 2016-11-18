@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     public TrelloApi trelloApi;
     public ProgressBar progressBar;
-    public Button getListsBtn;
-    public Button getCardsBtn;
     public ArrayList<TrelloList> trelloLists;
     public ArrayList<TrelloCard> trelloCards;
     public ArrayList<Project> projects;
@@ -45,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
         progressBar.setVisibility(View.INVISIBLE);
-        getListsBtn = (Button) findViewById(R.id.main_btn_get_lists);
-        getCardsBtn = (Button) findViewById(R.id.main_btn_get_cards);
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_projects);
         // use this setting to improve performance if you know that changes
@@ -60,23 +56,11 @@ public class MainActivity extends AppCompatActivity {
         // specify an adapter
         projectAdapter = new ProjectAdapter(this);
         mRecyclerView.setAdapter(projectAdapter);
-
-        getListsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getLists();
-            }
-        });
-
-        getCardsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getCards();
-            }
-        });
+        
+        getProjects();
     }
 
-    private void getLists() {
+    private void getProjects() {
         // Show progress indicator while working
         progressBar.setVisibility(View.VISIBLE);
 

@@ -22,16 +22,6 @@
             android:id="@+id/toolbar_title"
             android:theme="@style/DevicesToolbarTitle"/>
     </android.support.v7.widget.Toolbar>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_btn_get_lists"
-        android:text="@string/main_btn_get_lists"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_btn_get_cards"
-        android:text="@string/main_btn_get_cards"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
