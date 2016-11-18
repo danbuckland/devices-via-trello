@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Devices</string>
+    <string name="main_btn_get_lists">Get lists from Trello</string>
+    <string name="main_btn_get_cards">Get all cards from Trello</string>
 </resources>

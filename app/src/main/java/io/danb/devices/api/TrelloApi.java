@@ -14,6 +14,7 @@ public interface TrelloApi {
     public static final String BASE_URL = "https://api.trello.com/1/";
     public static final String APP_KEY = "91bd7382a964408ef824f8d588d6327f";
     public static final String AUTH_TOKEN = "";
+    public static final String BOARD_ID = "5735dade89ed6aa05205ba33";
 
     // Request method and URL specified in the annotation
     // Callback for the parsed response is the last parameter

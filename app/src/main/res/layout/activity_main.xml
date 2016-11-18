@@ -22,9 +22,28 @@
             android:id="@+id/toolbar_title"
             android:theme="@style/DevicesToolbarTitle"/>
     </android.support.v7.widget.Toolbar>
-
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:id="@+id/main_btn_get_lists"
+        android:text="@string/main_btn_get_lists"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_btn_get_cards"
+        android:text="@string/main_btn_get_cards"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_txt_response"
+            android:layout_marginTop="16dp"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_progress_bar"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 </LinearLayout>
