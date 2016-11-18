@@ -2,6 +2,8 @@ package io.danb.devices;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     public ProgressBar progressBar;
     public Button getListsBtn;
     public Button getCardsBtn;
-    public TextView responseTxt;
     public ArrayList<TrelloList> trelloLists;
     public ArrayList<TrelloCard> trelloCards;
+    ProjectAdapter projectAdapter;
 
 
     @Override
@@ -43,7 +45,19 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         getListsBtn = (Button) findViewById(R.id.main_btn_get_lists);
         getCardsBtn = (Button) findViewById(R.id.main_btn_get_cards);
-        responseTxt = (TextView) findViewById(R.id.main_txt_response);
+
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_projects);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter
+        projectAdapter = new ProjectAdapter(this);
+        mRecyclerView.setAdapter(projectAdapter);
 
         getListsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                         trelloListsString = trelloListsString + listItem.getName() + "\n";
                     }
 
-                    // Update text view
-                    responseTxt.setText(trelloListsString);
+                    // Update data in custom view adapter
+                    projectAdapter.updateData(trelloLists);
                 }
 
                 // Hide progress indicator when done
@@ -132,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // Update text view
-                    responseTxt.setText(trelloCardsString);
+                    // responseTxt.setText(trelloCardsString);
                 }
 
                 // Hide progress indicator when done
