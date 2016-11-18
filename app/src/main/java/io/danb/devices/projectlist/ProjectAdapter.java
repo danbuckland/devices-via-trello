@@ -31,6 +31,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
     public void onBindViewHolder(ProjectViewHolder projectViewHolder, int i) {
         Project project = projectsList.get(i);
         projectViewHolder.projectNameText.setText(project.getName());
+        projectViewHolder.noOfiPhonesText.setText("");
+        projectViewHolder.noOfiPadsText.setText("");
+        projectViewHolder.noOfAndroidsText.setText("");
+        projectViewHolder.noOfOthersText.setText("");
         if (project.getNoOfiPhones() > 0) {
             projectViewHolder.noOfiPhonesText.setText(project.getNoOfiPhones() + " iPhone(s)");
         }

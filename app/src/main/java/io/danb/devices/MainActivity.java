@@ -1,12 +1,12 @@
 package io.danb.devices;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<TrelloCard> trelloCards;
     public ArrayList<Project> projects;
     ProjectAdapter projectAdapter;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     @Override
@@ -58,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(projectAdapter);
         
         getProjects();
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Refresh items
+                refreshProjects();
+            }
+        });
     }
 
     private void getProjects() {
@@ -100,6 +110,18 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    private void refreshProjects() {
+        // Load items
+        getProjects();
+
+        // Load complete
+        onItemsLoadComplete();
+    }
+
+    private void onItemsLoadComplete() {
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     private void getCards() {
