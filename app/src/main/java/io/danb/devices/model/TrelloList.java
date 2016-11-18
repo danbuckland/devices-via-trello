@@ -7,7 +7,7 @@ public class TrelloList {
 
     private String id;
     private String name;
-    private ArrayList<TrelloCard> trelloCards;
+    private ArrayList<TrelloCard> cards;
 
     public String getId() {
         return id;
@@ -18,7 +18,7 @@ public class TrelloList {
     }
 
     public ArrayList<TrelloCard> getTrelloCards() {
-        return trelloCards;
+        return cards;
     }
 
 }
