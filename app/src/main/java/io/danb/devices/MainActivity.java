@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -19,6 +18,8 @@ import io.danb.devices.api.ServiceGenerator;
 import io.danb.devices.api.TrelloApi;
 import io.danb.devices.model.TrelloCard;
 import io.danb.devices.model.TrelloList;
+import io.danb.devices.projectlist.Project;
+import io.danb.devices.projectlist.ProjectAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public Button getCardsBtn;
     public ArrayList<TrelloList> trelloLists;
     public ArrayList<TrelloCard> trelloCards;
+    public ArrayList<Project> projects;
     ProjectAdapter projectAdapter;
 
 
@@ -93,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
 
                 // Get list names from response and add each to a single string
                 if (trelloLists != null) {
-                    String trelloListsString = "";
+                    // convert each Trello list into a Project
+                    projects = new ArrayList<Project>();
                     for (TrelloList listItem : trelloLists) {
-                        trelloListsString = trelloListsString + listItem.getName() + "\n";
+                        projects.add(new Project(listItem));
                     }
-
                     // Update data in custom view adapter
-                    projectAdapter.updateData(trelloLists);
+                    projectAdapter.updateData(projects);
                 }
 
                 // Hide progress indicator when done

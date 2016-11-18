@@ -1,4 +1,4 @@
-package io.danb.devices;
+package io.danb.devices.projectlist;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import io.danb.devices.model.TrelloList;
+import io.danb.devices.MainActivity;
+import io.danb.devices.R;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder> {
 
-    private ArrayList<TrelloList> projectsList;
+    private ArrayList<Project> projectsList;
     private static Context mContext;
 
     public ProjectAdapter(Context context) {
@@ -28,9 +29,20 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
     @Override
     public void onBindViewHolder(ProjectViewHolder projectViewHolder, int i) {
-        TrelloList project = projectsList.get(i);
+        Project project = projectsList.get(i);
         projectViewHolder.projectNameText.setText(project.getName());
-        projectViewHolder.noOfDevicesText.setText(project.getId());
+        if (project.getNoOfiPhones() > 0) {
+            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " iPhone(s)");
+        }
+        if (project.getNoOfiPads() > 0) {
+            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " iPad(s)");
+        }
+        if (project.getNoOfAndroids() > 0) {
+            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " Android(s)");
+        }
+        if (project.getNoOfOthers() > 0) {
+            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " Other(s)");
+        }
         projectViewHolder.currentItem = projectsList.get(i);
     }
 
@@ -43,14 +55,14 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         return new ProjectViewHolder(itemView);
     }
 
-    public void updateData(ArrayList<TrelloList> trelloLists) {
+    public void updateData(ArrayList<Project> projects) {
         // update the adapter's dataset
-        projectsList = trelloLists;
+        projectsList = projects;
         notifyDataSetChanged();
     }
 
     public static class ProjectViewHolder extends RecyclerView.ViewHolder {
-        public TrelloList currentItem;
+        public Project currentItem;
         protected TextView projectNameText;
         protected TextView noOfDevicesText;
 
