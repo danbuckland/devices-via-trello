@@ -3,4 +3,8 @@
     <string name="main_btn_get_lists">Get lists from Trello</string>
     <string name="main_btn_get_cards">Get all cards from Trello</string>
     <string name="list_project_long_project_name">Really Long Example Project Name To Fit UI</string>
+    <string name="list_project_no_of_iphones_text">6 iPhones</string>
+    <string name="list_project_no_of_ipads_text">4 iPads</string>
+    <string name="list_project_no_of_androids_text">3 Androids</string>
+    <string name="list_project_no_of_others_text">1 Other</string>
 </resources>

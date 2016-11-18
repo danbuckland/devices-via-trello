@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingTop="16dp"
-              android:paddingBottom="16dp"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:background="?android:attr/selectableItemBackground">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:paddingBottom="26dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="?android:attr/selectableItemBackground">
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:id="@+id/list_project_name"
         android:text="@string/list_project_long_project_name"
         android:ellipsize="end"
-        android:lines="3"
-        android:gravity="center_vertical|start"
-        android:layout_gravity="center_vertical"
         android:textSize="18sp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/list_project_no_of_devices"/>
+            android:id="@+id/list_project_no_of_iphones"
+            android:text="@string/list_project_no_of_iphones_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_project_no_of_ipads"
+            android:text="@string/list_project_no_of_ipads_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_project_no_of_androids"
+            android:text="@string/list_project_no_of_androids_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_project_no_of_others"
+            android:text="@string/list_project_no_of_others_text"/>
     </LinearLayout>
 </LinearLayout>

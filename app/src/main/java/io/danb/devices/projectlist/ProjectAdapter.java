@@ -32,16 +32,16 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         Project project = projectsList.get(i);
         projectViewHolder.projectNameText.setText(project.getName());
         if (project.getNoOfiPhones() > 0) {
-            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " iPhone(s)");
+            projectViewHolder.noOfiPhonesText.setText(project.getNoOfiPhones() + " iPhone(s)");
         }
         if (project.getNoOfiPads() > 0) {
-            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " iPad(s)");
+            projectViewHolder.noOfiPadsText.setText(project.getNoOfiPads() + " iPad(s)");
         }
         if (project.getNoOfAndroids() > 0) {
-            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " Android(s)");
+            projectViewHolder.noOfAndroidsText.setText(project.getNoOfAndroids() + " Android(s)");
         }
         if (project.getNoOfOthers() > 0) {
-            projectViewHolder.noOfDevicesText.setText(project.getNoOfiPhones() + " Other(s)");
+            projectViewHolder.noOfOthersText.setText(project.getNoOfOthers() + " Other(s)");
         }
         projectViewHolder.currentItem = projectsList.get(i);
     }
@@ -64,13 +64,19 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
     public static class ProjectViewHolder extends RecyclerView.ViewHolder {
         public Project currentItem;
         protected TextView projectNameText;
-        protected TextView noOfDevicesText;
+        protected TextView noOfiPhonesText;
+        protected TextView noOfiPadsText;
+        protected TextView noOfAndroidsText;
+        protected TextView noOfOthersText;
 
         public ProjectViewHolder(View v) {
             super(v);
 
             projectNameText = (TextView) v.findViewById(R.id.list_project_name);
-            noOfDevicesText = (TextView) v.findViewById(R.id.list_project_no_of_devices);
+            noOfiPhonesText = (TextView) v.findViewById(R.id.list_project_no_of_iphones);
+            noOfiPadsText = (TextView) v.findViewById(R.id.list_project_no_of_ipads);
+            noOfAndroidsText = (TextView) v.findViewById(R.id.list_project_no_of_androids);
+            noOfOthersText = (TextView) v.findViewById(R.id.list_project_no_of_others);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

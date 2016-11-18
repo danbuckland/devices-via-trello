@@ -11,46 +11,64 @@ public class Project {
 
     private String name;
     private int noOfiPhones;
+    private int noOfiPads;
+    private int noOfAndroids;
+    private int noOfOthers;
     private TrelloList trelloList;
 
     public Project(TrelloList trelloList) {
         this.trelloList = trelloList;
         this.name = trelloList.getName();
-        this.noOfiPhones = getNoOfiPhones();
+        countDevices();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getNoOfiPhones() {
+    public void countDevices() {
         // Count the number of array items with the label "iPhone"
         ArrayList<TrelloCard> trelloCards = trelloList.getTrelloCards();
-        int count = 0;
+        int noOfiPhones = 0;
+        int noOfiPads = 0;
+        int noOfAndroids = 0;
+        int noOfOthers = 0;
         for (TrelloCard trelloCard : trelloCards) {
             ArrayList<TrelloLabel> trelloLabels = trelloCard.getLabels();
             if (trelloLabels.size() > 0) {
                 for (TrelloLabel trelloLabel : trelloLabels) {
-                    if (trelloLabel.getName().equals("iPhone")) {
-                        count++;
+                    switch (trelloLabel.getName()) {
+                        case "iPhone": noOfiPhones++;
+                            break;
+                        case "iPad": noOfiPads++;
+                            break;
+                        case "Android": noOfAndroids++;
+                            break;
+                        case "Other": noOfOthers++;
                     }
                 }
             }
         }
+        this.noOfiPhones = noOfiPhones;
+        this.noOfiPads = noOfiPads;
+        this.noOfAndroids = noOfAndroids;
+        this.noOfOthers = noOfOthers;
+    }
 
-        return count;
+    public int getNoOfiPhones() {
+        return noOfiPhones;
     }
 
     public int getNoOfiPads() {
-        return 0;
+        return noOfiPads;
     }
 
     public int getNoOfAndroids() {
-        return 0;
+        return noOfAndroids;
     }
-
 
     public int getNoOfOthers() {
-        return 0;
+        return noOfOthers;
     }
+
 }
