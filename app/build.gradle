@@ -25,5 +25,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Retrofit & OkHttp
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:okhttp:3.0.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.0'
+    // Stetho debugging dependencies
+    compile 'com.facebook.stetho:stetho:1.3.0'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.3.0'
+    // Unit testing dependencies
     testCompile 'junit:junit:4.12'
+    // Set this dependency if you want to use Mockito
+    // testCompile 'org.mockito:mockito-core:1.10.19'
+    // Set this dependency if you want to use Hamcrest matching
+    // androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
 }
