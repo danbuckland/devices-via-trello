@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -36,7 +35,6 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class ProjectsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     ProjectAdapter projectAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
     public TrelloApi trelloApi;
@@ -95,7 +93,7 @@ public class ProjectsFragment extends Fragment {
 
         getProjects();
 
-        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.main_swipe_refresh_layout);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.projects_swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
