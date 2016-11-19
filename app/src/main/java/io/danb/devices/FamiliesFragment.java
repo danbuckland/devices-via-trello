@@ -33,8 +33,6 @@ import io.danb.devices.projectlist.ProjectAdapter;
 public class FamiliesFragment extends Fragment {
     public static FamilyAdapter familyAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
-    public TrelloApi trelloApi;
-    public ArrayList<Family> families;
     public Context context;
 
     private OnFamilyInteractionListener mListener;
@@ -70,9 +68,6 @@ public class FamiliesFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_projects, container, false);
 
-        Stetho.initializeWithDefaults(getActivity());
-        trelloApi = ServiceGenerator.createService(TrelloApi.class);
-
         RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.main_recycler_projects);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -85,8 +80,6 @@ public class FamiliesFragment extends Fragment {
         // use a linear layout manager
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        getFamilies();
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.projects_swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -138,13 +131,8 @@ public class FamiliesFragment extends Fragment {
         void onFamilyInteraction(int position);
     }
 
-    private void getFamilies() {
-        // TODO: Add a getFamilies method that doesn't require an additional network call
-    }
-
     private void refreshFamilies() {
-        // TODO: Do a netwrok refresh here
-        getFamilies();
+        MainActivity.getDevicesData();
 
         // Load complete
         onItemsLoadComplete();
