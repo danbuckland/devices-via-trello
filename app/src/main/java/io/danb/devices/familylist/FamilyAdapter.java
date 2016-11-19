@@ -32,6 +32,16 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyAdapter.FamilyView
     public void onBindViewHolder(FamilyViewHolder familyViewHolder, int i) {
         Family family = familiesList.get(i);
         familyViewHolder.familyNameText.setText(family.getName());
+
+
+        familyViewHolder.availableDevices.setText("");
+        familyViewHolder.assignedDevices.setText("");
+        if (family.getAvailableDevices() > 0) {
+            familyViewHolder.availableDevices.setText(family.getAvailableDevices() + " Available");
+        }
+        if (family.getAssignedDevices() > 0) {
+            familyViewHolder.assignedDevices.setText(family.getAssignedDevices() + " Assigned");
+        }
         familyViewHolder.currentItem = familiesList.get(i);
     }
 
@@ -39,7 +49,7 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyAdapter.FamilyView
     public FamilyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.list_project, viewGroup, false);
+                inflate(R.layout.list_family, viewGroup, false);
 
         return new FamilyViewHolder(itemView);
     }
@@ -53,11 +63,15 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyAdapter.FamilyView
     public static class FamilyViewHolder extends RecyclerView.ViewHolder {
         public Family currentItem;
         protected TextView familyNameText;
+        protected TextView availableDevices;
+        protected TextView assignedDevices;
 
         public FamilyViewHolder(View v) {
             super(v);
 
-            familyNameText = (TextView) v.findViewById(R.id.list_project_name);
+            familyNameText = (TextView) v.findViewById(R.id.list_family_name);
+            availableDevices = (TextView) v.findViewById(R.id.list_family_no_of_available);
+            assignedDevices = (TextView) v.findViewById(R.id.list_family_no_of_assigned);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

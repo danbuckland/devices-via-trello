@@ -19,6 +19,7 @@ import io.danb.devices.api.ServiceGenerator;
 import io.danb.devices.api.TrelloApi;
 import io.danb.devices.familylist.Family;
 import io.danb.devices.familylist.FamilyAdapter;
+import io.danb.devices.projectlist.ProjectAdapter;
 
 
 /**
@@ -30,7 +31,7 @@ import io.danb.devices.familylist.FamilyAdapter;
  * create an instance of this fragment.
  */
 public class FamiliesFragment extends Fragment {
-    FamilyAdapter familyAdapter;
+    public static FamilyAdapter familyAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
     public TrelloApi trelloApi;
     public ArrayList<Family> families;

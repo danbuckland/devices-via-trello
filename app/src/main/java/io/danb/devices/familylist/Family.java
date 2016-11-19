@@ -1,22 +1,28 @@
 package io.danb.devices.familylist;
 
-
-import java.util.ArrayList;
-
-import io.danb.devices.devices.Device;
-
 public class Family {
 
-    private String name;
-    private ArrayList<Device> devices;
+    private String familyName;
 
-    public Family(ArrayList<Device> devices) {
-        this.devices = devices;
-        this.name = "iPhones";
+    private int availableDevices;
+    private int assignedDevices;
+
+    public Family(String familyName, int availableDevices, int assignedDevices) {
+        this.familyName = familyName;
+        this.availableDevices = availableDevices;
+        this.assignedDevices = assignedDevices;
     }
 
     public String getName() {
-        return name;
+        return familyName;
+    }
+
+    public int getAvailableDevices() {
+        return availableDevices;
+    }
+
+    public int getAssignedDevices() {
+        return assignedDevices;
     }
 
 }
