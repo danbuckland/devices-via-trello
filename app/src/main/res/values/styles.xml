@@ -30,7 +30,6 @@
     </style>
 
     <style name="ListProjectCard" parent="DevicesTheme">
-        <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 

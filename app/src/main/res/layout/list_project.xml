@@ -22,7 +22,6 @@
     card_view:contentPaddingTop="18dp"
     card_view:contentPaddingLeft="18dp"
     card_view:contentPaddingRight="18dp"
-    card_view:cardBackgroundColor="@color/cardview_custom_background"
     card_view:cardElevation="4dp">
     <LinearLayout
         android:orientation="vertical"
